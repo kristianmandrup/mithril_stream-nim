@@ -11,15 +11,10 @@ See [Mithril Stream API](https://mithril.js.org/stream.html)
 proc map*(stream: Stream, fn: proc(v: Stream): Stream): Stream
 
 # global static methods
-proc stream*(value: auto): Stream {.
-importcpp: "Stream(#)".}
-proc combine*(combiner: proc(streams: seq[Stream]: auto, changed: seq[Stream])): Stream {.
-importcpp: "Stream.combine(#)".}
-proc merge*(streams: seq[Stream]): Stream {.importcpp: "Stream.merge(#)".}
-proc scan*(fn: proc(value: auto): auto, accumulator: auto, stream: Stream): Stream {.
-importcpp: "Stream.scan(#)".}
-proc scanMerge*(pairs: seq[pairItem: auto], accumulator: auto): Stream {.
-importcpp: "Stream.scan(#)".}
-proc lift*(lifter: proc(streams: varargs[auto]), streams: seq[Stream]): Stream {.
-importcpp: "Stream.lift(#)".}
+proc stream*(value: auto): Stream
+proc combine*(combiner: proc(streams: seq[Stream]: auto, changed: seq[Stream])): Stream
+proc merge*(streams: seq[Stream]): Stream
+proc scan*(fn: proc(value: auto): auto, accumulator: auto, stream: Stream): Stream
+proc scanMerge*(pairs: seq[pairItem: auto], accumulator: auto): Stream
+proc lift*(lifter: proc(streams: varargs[auto]), streams: seq[Stream]): Stream
 ```
